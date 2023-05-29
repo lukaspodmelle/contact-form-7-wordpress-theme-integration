@@ -1,0 +1,18 @@
+/* Sample CSS for styling the message when CF7 is not installed */
+
+.msg-info {
+    font-family: Arial, sans-serif;
+    background-color: #E6F7FF;
+    color: #005EB4;
+    padding: 1em 1.2em;
+    border-radius: 6px;
+    max-width: fit-content;
+  }
+  .msg-info a {
+    color: #005EB4;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .msg-info a:hover {
+    text-decoration: underline;
+  }
