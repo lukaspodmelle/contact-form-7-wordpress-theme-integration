@@ -1,5 +1,5 @@
-# Contact Form 7 integration in a custom theme
-Are you developing a custom WordPress theme and want to integrate a default CF7 form into your template? This will help you out.
+# Contact Form 7 Integration In a Custom Theme
+Are you developing a custom WordPress theme and want to integrate a default CF7 form into your template?
 
 ### Functionality
 
@@ -68,7 +68,7 @@ function cf7_contact_form() {
       echo
 
       '<div class="msg-info">
-          Please install and activate the Contact Form 7 Plugin to get a&nbsp;form to appear. You can get it <a href="https://wordpress.org/plugins/contact-form-7/">here</a>.
+          Please install and activate the Contact Form 7 Plugin to get a form to appear. You can get it <a href="https://wordpress.org/plugins/contact-form-7/">here</a>.
       </div>';
 
     }
@@ -80,23 +80,30 @@ function cf7_contact_form() {
 To display your form on the frontend, simply call the shortcode function:
 
 ```
-<?php cf7_contact_form() // Create contact form ?>
+<?php cf7_contact_form() ?> // Create contact form
 ```
 
 ### TIP
 
-If you want to use the form in a hardcoded location, you can use [Customization API](https://codex.wordpress.org/Theme_Customization_API) and create a new customizer section, where the user can easily swap the shortcode for their own. In this case, you can modify the last function with ``get_theme_mod``:
+If you want to use the form in a hardcoded location, you can use the [Customization API](https://codex.wordpress.org/Theme_Customization_API) and create a new customizer section, where the user can easily swap the shortcode for their own. In this case, you can modify the last function with ``get_theme_mod``:
 
 ```
 function cf7_contact_form() {
+
   $cf7_default_shortcode = get_theme_mod( 'contact_form', '[contact-form-7 title="Contact me"]' ); // default shortcode via customizer
+
   if ( in_array( 'contact-form-7/wp-contact-form-7.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) { // check for plugin installation
+
       echo do_shortcode( $cf7_default_shortcode ); // do shortcode
+
   } else {
+
       echo
+
       '<div class="msg-info">
           Please install and activate the Contact Form 7 Plugin to get a form to appear. You can get it <a href="https://wordpress.org/plugins/contact-form-7/">here</a>.
       </div>';
+
   }
 }
 ```
